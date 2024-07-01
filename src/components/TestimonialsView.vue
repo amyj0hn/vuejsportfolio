@@ -8,8 +8,8 @@
             </template>
     
             <template #cardBody>
-              <p>{{ testimonial.name }} {{ testimonial.surname }}</p>
-              <p>{{ testimonial.testimonial }}</p>
+              <h2>{{ testimonial.name }} {{ testimonial.surname }}</h2>
+              <p>"{{ testimonial.testimonial }} "</p>
 
             </template>
   

@@ -1,0 +1,82 @@
+/*Bootstrap icon*/
+/* app */
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  nav {
+    padding: 30px;
+    position: fixed;
+ }
+  
+  nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  nav a.router-link-exact-active {
+    color: #42b983;
+  }
+
+/*universal selectors*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Custom variables*/
+:root {
+  --primary: #faedcd;
+  --secondary: #e7c8a0;
+  --tertiary: #664226;
+  --alternative: #987554;
+}
+main{
+  background-image: linear-gradient( to top, var(--secondary), var(--tertiary));
+  background-repeat: repeat-x;
+  color: var(--primary);
+}
+
+/*Select all images*/
+img {
+    width: 4rem;
+    aspect-ratio: 1;
+    object-position: center;
+    
+}
+
+/*logo*/
+img[alt='logo']{
+    width: 5rem;
+}
+
+/* wrapper */
+:is(.wrapper){
+    display: grid;
+    grid-template-rows: auto minmax(100dvh, 100%) auto;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+section{
+  scroll-margin-block: 5rem;
+}
+
+
+
+/* Media query */
+@media screen and (width < 800px){
+#landing .row{
+  display: block;
+}
+}
