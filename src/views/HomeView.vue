@@ -9,6 +9,9 @@
   <section class="row" id="resume">
 <ResumeView/>
   </section>
+  <section class="row" id="skills">
+<SkillsView/>
+  </section>
   <section class="row" id="projects">
 <ProjectsView/>
   </section>
