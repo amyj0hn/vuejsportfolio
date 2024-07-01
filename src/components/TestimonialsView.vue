@@ -16,10 +16,29 @@
         </Card>
       </div>
     </div>
+<div class="row">
+  <div id="carouselFade" class="carousel slide carousel-fade">
+<div class="carousel-inner">
+  <Carousel v-for="testimonial in testimonials" :key="testimonial.id" class="carousel">
+    <template #carousel-item>
+     <img :src="testimonial.image" alt="testimonials" loading="lazy" class="d-block w-100" />
+    </template>
+
+    <template #carousel-caption>
+      <p>{{ testimonial.name }}  {{ testimonial.surname}}</p>
+
+    </template>
+</Carousel>
+</div>
+  </div>
+</div>
+
+
   </template>
   
   <script setup>
   import Card from '@/components/Card.vue'
+  import Carousel from '@/components/Carousel.vue'
   
   import { computed, onMounted, ref } from "vue";
   import { useStore } from "vuex";
