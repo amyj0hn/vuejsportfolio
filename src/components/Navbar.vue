@@ -19,6 +19,9 @@
             <a class="nav-link" href="#resume"> <i class="bi bi-file-earmark-person"></i>Resume</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#skills"> <i class="bi bi-stars"></i>Skills</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#projects"><i class="bi bi-folder2"></i> Projects</a>
           </li>
           <li class="nav-item">
