@@ -17,7 +17,8 @@
 <TestimonialsView/>
   </section>
   <section class="row" id="reachme">
-
+    <h2>Reach Me</h2>
+<ReachMeView/>
   </section>
 
 </div>
@@ -30,11 +31,12 @@ import AboutMeView from '@/components/AboutMeView.vue'
 import ProjectsView from '@/components/ProjectsView.vue'
 import TestimonialsView from '@/components/TestimonialsView.vue'
 import ResumeView from '@/components/ResumeView.vue'
+import ReachMeView from '@/components/ReachMeView.vue'
 
 export default {
   name: 'HomeView',
   components:{
-    LandingView, AboutMeView, ResumeView, ProjectsView, TestimonialsView
+    LandingView, AboutMeView, ResumeView, ProjectsView, TestimonialsView, ReachMeView
   }
 
 }
