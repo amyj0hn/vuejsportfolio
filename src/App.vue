@@ -1,9 +1,11 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
+  <div class="wrapper">
 
-  </nav>
+<NavBar />
+
+
   <router-view/>
+</div>
 </template>
 
 <style>
