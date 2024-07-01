@@ -10,7 +10,7 @@
 
   </section>
   <section class="row" id="projects">
-
+<ProjectsView/>
   </section>
   <section class="row" id="testimonials">
 
@@ -25,12 +25,12 @@
 <script>
 // @ is an alias to /src
 import LandingView from '@/components/LandingView.vue'
-
+import ProjectsView from '@/components/ProjectsView.vue'
 
 export default {
   name: 'HomeView',
   components:{
-    LandingView
+    LandingView, ProjectsView
   }
 
 }
