@@ -1,12 +1,22 @@
 <template>
   <div class="wrapper">
 
-<NavBar />
+    <Navbar />
+    <main class="container-fluid">
+      <router-view/>
+    </main>
 
-
-  <router-view/>
 </div>
 </template>
+
+<script>
+import Navbar from '@/components/Navbar'
+export default{
+  components:{
+    Navbar
+  }
+}
+</script>
 
 <style>
 #app {
