@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <section class="row" id="landing">
-
+<LandingView/>
   </section>
   <section class="row" id="about">
 
@@ -24,9 +24,14 @@
 
 <script>
 // @ is an alias to /src
+import LandingView from '@/components/LandingView.vue'
+
 
 export default {
   name: 'HomeView',
+  components:{
+    LandingView
+  }
 
 }
 </script>
