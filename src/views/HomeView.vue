@@ -10,6 +10,7 @@
 <ResumeView/>
   </section>
   <section class="row" id="skills">
+    <h2>Skills</h2>
 <SkillsView/>
   </section>
   <section class="row" id="projects">
