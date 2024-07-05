@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import Swal from 'sweetalert2/dist/sweetalert2'
-const portfolioURL = 'https://amyj0hn.github.io/VueEOMP/data/ '
+const portfolioURL = ' https://amyj0hn.github.io/VueEOMP/data/'
 export default createStore({
   state: {
     jobTitle: null,
@@ -11,6 +11,7 @@ export default createStore({
     skills: null,
     testimonials: null,
     projects: null,
+    lineDrawing:null
 
 
   },
@@ -43,7 +44,6 @@ export default createStore({
     async fetchJobTitle(context){
       try{
         let {jobTitle} = await (await axios.get(portfolioURL)).data
-        console.log(jobTitle);
         context.commit("setJobTitle", jobTitle)
 
       }
@@ -74,6 +74,7 @@ export default createStore({
     async fetchEducation(context){
       try{
         let {education} = await (await axios.get(portfolioURL)).data
+        console.log(education)
         context.commit("setEducation", education)
 
       }
@@ -89,6 +90,7 @@ export default createStore({
     async fetchExperience(context){
       try{
         let {experience} = await (await axios.get(portfolioURL)).data
+        console.log(experience);
         context.commit("setExperience", experience)
 
       }

@@ -1,10 +1,10 @@
 <template>
-  <div class="flip-card">
-    <div class="card-front">
-      <slot name="card-front"></slot>
+  <div class="flip-card m-auto">
+    <div class="flip-card-front">
+      <slot name="flipCardFront"></slot>
     </div>
-    <div class="card-back">
-      <slot name="card-back"></slot>
+    <div class="flip-card-back">
+      <slot name="flipCardBack"></slot>
     </div>
   </div>
 </template>
@@ -15,17 +15,15 @@ export default {};
 
 <style scoped>
 .flip-card {
-  background-color: blue;
   width: 300px;
   height: 200px;
-  border: 1px solid #f1f1f1;
+  border: none;
   perspective: 1000px;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d; 
 }
 
-/* This container is needed to position the front and back side */
 
 .flip-card:hover {
   transform: rotateY(180deg);
@@ -36,20 +34,22 @@ export default {};
   position: absolute;
   width: 100%;
   height: 100%;
-  /* -webkit-backface-visibility: hidden; */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 
 .flip-card-front {
-  background-color: white;
-  color: black;
-  transform: rotate(180deg);
+  /* background-color: white;
+  color: black; */
+  transform: rotate(360deg);
+  size: 2rem;
+  align-content: center;
 }
 
 .flip-card-back {
-  background-color: black;
-  color: white;
+  /* background-color: black;
+  color: white; */
   transform: rotateY(180deg);
 }
 </style>

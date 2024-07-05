@@ -1,114 +1,169 @@
 <template>
-    <div class="testimonials-container d-flex">
-      <div class="row gap-2">
-  
-        <Card v-for="testimonial in testimonials" :key="testimonial.id" class="card">
-            <template #cardHeader>
-              <img :src="testimonial.image" alt="testimonials" loading="lazy">
-            </template>
-    
-            <template #cardBody>
-              <h2>{{ testimonial.name }} {{ testimonial.surname }}</h2>
-              <p>"{{ testimonial.testimonial }} "</p>
-
-            </template>
-  
-        </Card>
-      </div>
+  <div class="testimonial-container">
+    <div class="row">
+      <h2 class="display-2">Testimonials</h2>
     </div>
-<div class="row">
-  <div id="carouselFade" class="carousel slide carousel-fade">
-<div class="carousel-inner">
-  <Carousel v-for="testimonial in testimonials" :key="testimonial.id" class="carousel">
-    <template #carousel-item>
-     <img :src="testimonial.image" alt="testimonials" loading="lazy" class="d-block w-100" />
-    </template>
-
-    <template #carousel-caption>
-      <p>{{ testimonial.name }}  {{ testimonial.surname}}</p>
-
-    </template>
-</Carousel>
-</div>
+    <div id="carouselExampleCaptions" class="carousel slide carousel-mobile">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="4"
+          aria-label="Slide 5"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div
+          class="carousel-item"
+          :class="{ active: testimonial.id == 1 }"
+          v-for="testimonial in testimonials"
+          :key="testimonial.id"
+        >
+          <img
+            :src="testimonial.image"
+            class="d-block w-100"
+            :alt="testimonial.name"
+            loading="lazy"
+          />
+          <div class="carousel-caption d-md-block">
+            <h5>{{ testimonial.name }} {{ testimonial.surname }}</h5>
+            <p class="lead">{{ testimonial.company }}</p>
+            <p>{{ testimonial.testimonial }}</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   </div>
-</div>
+</template>
 
+<script setup>
+import { computed, onMounted, ref } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+const cnt = ref(-1);
+//This line of code accesses your data as object
+const testimonials = computed(() => store.state.testimonials);
+// const testimonialIDs = computed( ()=> testimonials.value?.map( test=>test.id))
+function repeat() {
+  try {
+    if (cnt.value == testimonials.value?.length) cnt.value = 0;
+    store.value = testimonials.value?.at(cnt.value)?.testimonials;
+    setTimeout(repeat, 2000);
+    cnt.value++;
+  } catch (e) {
+    //
+  }
+}
 
-  </template>
-  
-  <script setup>
-  import Card from '@/components/Card.vue'
-  import Carousel from '@/components/Carousel.vue'
-  
-  import { computed, onMounted, ref } from "vue";
-  import { useStore } from "vuex";
-  const store = useStore();
-  const cnt = ref(-1);
-  //This line of code accesses your data as object
-  const testimonials = computed(() => store.state.testimonials);
-  function repeat() {
-    try {
-      if (cnt.value == testimonials.value?.length) cnt.value = 0;
-      store.value = testimonials.value?.at(cnt.value)?.testimonials;
-      setTimeout(repeat, 2000);
-      cnt.value++;
-    } catch (e) {
-      //
-    }
+onMounted(() => {
+  store.dispatch("fetchTestimonials");
+  repeat();
+});
+</script>
+
+<style scoped>
+.testimonial-container{
+  padding: 3rem auto;
+}
+
+.carousel-caption {
+  background-color: white;
+  color: black;
+  border-radius: 0px 4rem 0 4rem;
+}
+
+.carousel {
+  width: 40rem;
+}
+
+.carousel-mobile {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-inner > .carousel-item > img {
+  height: auto;
+}
+
+.carousel-caption {
+  background-color: white;
+  color: black;
+  border-radius: 0px 4rem 0 4rem;
+  padding: 1rem;
+  margin: auto;
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .carousel-mobile {
+    max-width: 90%;
   }
-  
-  onMounted(() => {
-    store.dispatch("fetchTestimonials");
-    repeat();
-  });
-  </script>
-  
-  <style scoped>
-  .button {
-    /* padding: 1em 2em; */
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: var(--secondary);
-    transition: all 1000ms;
-    font-size: 15px;
-    position: relative;
-    overflow: hidden;
-    outline: 2px solid var(--tertiary);
+  .carousel-caption {
+    font-size: 0.8rem;
+    height: 11rem;
+    border-radius: 0px 28px;
+    padding: 1px;
   }
-  
-  button:hover {
-    color: var(--secondary);
-    transform: scale(1.1);
-    outline: 2px solid var(--secondary);
-    box-shadow: 4px 5px 17px -4px  var(--alterative);
+
+  .carousel-caption .lead {
+    display: none;
   }
-  
-  button::before {
-    content: "";
-    position: absolute;
-    left: -50px;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--tertiary);
-    transform: skewX(45deg);
-    z-index: -1;
-    transition: width 1000ms;
+
+  .carousel-indicators {
+    display: none;
   }
-  
-  button:hover::before {
-    width: 250%;
+}
+
+@media screen and (max-width: 480px) {
+  .carousel-mobile {
+    max-width: 80%;
   }
-  
-  /* Media queries */
-  @media screen and (width < 900px){
-    Card{
-      display: flex;
-      
-    }
+  .carousel-caption {
+    font-size: 0.6rem;
   }
-  </style>
+}
+</style>

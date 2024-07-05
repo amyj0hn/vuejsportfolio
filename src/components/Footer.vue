@@ -1,11 +1,9 @@
 <template>
-  <div class="container-fluid">
 <div class="row">
     <p class="lead">Amy's portfolio &copy;
         <span>{{ cYear }}</span>
     </p>
 </div> 
-  </div>
 </template>
 
 <script>
@@ -21,6 +19,9 @@ data(){
 }
 </script>
 
-<style>
+<style scoped>
 
+.lead{
+  color: black;
+}
 </style>

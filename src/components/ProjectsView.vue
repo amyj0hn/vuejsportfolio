@@ -1,20 +1,30 @@
 <template>
     <div class="projects-container d-flex">
+      <div class="row display-2">
+        Projects
+      </div>
       <div class="row gap-2">
   
         <Card v-for="project in projects" :key="project.id" class="card">
             <template #cardHeader>
               <img :src="project.img_url" alt="projects" loading="lazy">
+              <div class="btns d-flex justify-content-evenly">
+                <a :href="project.vercel_link"  target="blank">
+                  <i class="bi bi-broadcast"></i>
+                </a>
+
+                <a :href="project.gitHub-link" class="button" target="_blank">
+                  <i class="bi bi-github"></i>
+                </a> 
+              </div>
+               
             </template>
     
             <template #cardBody>
               <p>{{ project.projectTitle }}</p>
               <p>{{ project.description }}</p>
-              <div class="btns">
-                <button class="button">Hover me</button>
-                <button class="button">Hover me</button>
-  
-            </div>
+
+
             </template>
   
         </Card>
@@ -49,50 +59,67 @@
   </script>
   
   <style scoped>
+
+.bi{
+  font-size: 30px;
+  color: black;
+}
+
+/* .Btn:hover .BG {
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}   */
+
+.card:hover{
+background-color: #FCD1D1;
+
+}
   .button {
-    /* padding: 1em 2em; */
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: var(--secondary);
-    transition: all 1000ms;
-    font-size: 15px;
-    position: relative;
-    overflow: hidden;
-    outline: 2px solid var(--tertiary);
-  }
-  
-  button:hover {
-    color: var(--secondary);
-    transform: scale(1.1);
-    outline: 2px solid var(--secondary);
-    box-shadow: 4px 5px 17px -4px  var(--alterative);
-  }
-  
-  button::before {
-    content: "";
-    position: absolute;
-    left: -50px;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--tertiary);
-    transform: skewX(45deg);
-    z-index: -1;
-    transition: width 1000ms;
-  }
-  
-  button:hover::before {
-    width: 250%;
-  }
-  
+
+  align-items: center;
+  gap: 15px;
+  outline-offset: -3px;
+  cursor: pointer;
+  transition: 400ms;
+  width: 50%;
+}
+
+
+.button:hover {
+  background-color: transparent;
+}
+
+.projects-container{
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+
+}
+
+.card img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.card img:hover{
+    transform: scale(1.2);
+}
+template{
+  position: relative;
+  overflow: hidden;
+}
+
+.row{
+  margin: 0;
+  justify-content: center;
+}
+
+
   /* Media queries */
-  @media screen and (width < 900px){
+  @media screen and (width > 800px){
     Card{
-      display: flex;
+     flex-direction: column;
       
     }
   }

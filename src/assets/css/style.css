@@ -1,26 +1,24 @@
-/*Bootstrap icon*/
 /* app */
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
-  
-  nav {
-    padding: 30px;
-    position: fixed;
- }
-  
-  nav a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-  
-  nav a.router-link-exact-active {
-    color: #42b983;
-  }
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: var(--tertiary);
+}
+
+nav {
+  position: relative;
+}
+
+nav a {
+  font-weight: bold;
+  color: var(--alternative);
+}
+
+nav a.router-link-exact-active {
+  color: var(--tertiary);
+}
 
 /*universal selectors*/
 *,
@@ -35,48 +33,80 @@
 
 /*Custom variables*/
 :root {
-  --primary: #faedcd;
-  --secondary: #e7c8a0;
-  --tertiary: #664226;
-  --alternative: #987554;
+  --primary: #975C8D;
+  --secondary: #FFADBC;
+  --tertiary: #faedcd;
+  --alternative: #7DE5ED;
 }
-main{
-  background-image: linear-gradient( to top, var(--secondary), var(--tertiary));
-  background-repeat: repeat-x;
-  color: var(--primary);
+main {
+  /* background-image: url("https://amyj0hn.github.io/project-images/images/background-vue.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover; */
+  color: var(--tertiary);
+  margin: 0;
+}
+
+.row {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 /*Select all images*/
 img {
-    width: 4rem;
-    aspect-ratio: 1;
-    object-position: center;
-    
+  width: 4rem;
+  aspect-ratio: 1;
+  object-position: center;
 }
 
 /*logo*/
-img[alt='logo']{
-    width: 5rem;
+img[alt="logo"] {
+  width: 5rem;
 }
 
 /* wrapper */
-:is(.wrapper){
-    display: grid;
-    grid-template-rows: auto minmax(100dvh, 100%) auto;
+::-webkit-scrollbar {
+  display: none;
+}
+.section {
+  height: auto;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
 }
 
-::-webkit-scrollbar{
-    display: none;
+#landing{
+  background-image: linear-gradient(to right, #863A6F,  #D989B5, #FFADBC,#975C8D) ;
 }
-section{
-  scroll-margin-block: 5rem;
+#about{
+  background-image: linear-gradient(to left, #863A6F,  #D989B5, #FFADBC,#975C8D) ;
 }
-
-
+#resume{
+  background-image: linear-gradient(to right, #863A6F,  #D989B5, #FFADBC,#975C8D) ;
+}
+#skills{
+  background-image: linear-gradient(to left, #863A6F,  #D989B5, #FFADBC,#975C8D) ;
+}
+#projects{
+  background-image: linear-gradient(to right, #863A6F,  #D989B5, #FFADBC,#975C8D) ;
+}
+#testimonials{
+  background-image: linear-gradient(to left, #863A6F,  #D989B5, #FFADBC,#975C8D) ;
+}
+#reachme{
+  background-image: linear-gradient(to right, #863A6F,  #D989B5, #FFADBC,#975C8D) ;
+}
 
 /* Media query */
-@media screen and (width < 800px){
-#landing .row{
-  display: block;
-}
+@media screen and (width < 800px) {
+  #landing .row {
+    display: block;
+  }
+
+  .contact-container{
+    display: flex;
+    flex-direction: column;
+  }
 }
